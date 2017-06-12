@@ -1,4 +1,5 @@
 #include "sphere.hpp"
+#include "cmath"
 
 //Konstruktoren
 
@@ -23,9 +24,9 @@ float getRadius(){
 //Shape Methoden 
 
 virtual float  area() const override{
-
+    return 4 * M_PI * pow(radius_, 2);
 }
 
 virtual float volume() const override{
-
+    return (4/3) * M_PI * pow(radius_, 3);
 }

@@ -13,7 +13,7 @@ Box(glm::vec3 min, glm::vec3 max):
 
 //get-Methoden
 
-glm::vec3 const& getMin{
+glm::vec3 const& getMin(){
     return min_;
 }
 
