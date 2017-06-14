@@ -15,9 +15,9 @@ class Box : public Shape{
 
         virtual float volume() const override;
 
-        glm::vec3 const& getMin();
+        glm::vec3 const& getMin() const;
 
-        glm::vec3 const& getMax();
+        glm::vec3 const& getMax() const;
 
     private:
 

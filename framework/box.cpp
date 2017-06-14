@@ -2,39 +2,39 @@
 
 //Konstruktoren
 
-Box():
-    min_{-1},
-    max_{1} {}
+Box::Box():
+    min_{-1.0f},
+    max_{1.0f} {}
 
 
-Box(glm::vec3 min, glm::vec3 max):
+Box::Box(glm::vec3 min, glm::vec3 max):
     min_{min},
     max_{max} {}
 
 //get-Methoden
 
-glm::vec3 const& getMin(){
+glm::vec3 const& Box::getMin() const{
     return min_;
 }
 
-glm::vec3 const& getMax(){
+glm::vec3 const& Box::getMax() const{
     return max_;
 }
 
 //Shape Methoden
 
-virtual float  area() const override{
-    float a = std::abs(max_.x - min_.x);
-    float b = std::abs(max_.y - min_.y);
-    float c = std::abs(max_.z - min_.z);
-    return 2*(a * b + b * c + a * c);
+float Box::area() const{                            //eigentlich std::abs
+    float a = abs(abs(max_.x) - abs(min_.x));
+    float b = abs(abs(max_.y) - abs(min_.y));
+    float c = abs(abs(max_.z) - abs(min_.z));
+    return 2*((a * b) + (b * c) + (a * c));
 
 }
 
-virtual float volume() const override{
-    float a = std::abs(max_.x - min_.x);
-    float b = std::abs(max_.y - min_.y);
-    float c = std::abs(max_.z - min_.z);
+float Box::volume() const{
+    float a = abs(abs(max_.x) - abs(min_.x));
+    float b = abs(abs(max_.y) - abs(min_.y));
+    float c = abs(abs(max_.z) - abs(min_.z));
     return a * b * c;
     
 }

@@ -15,9 +15,9 @@ class Sphere : public Shape {
 
         virtual float volume() const override;
 
-        glm::vec3 const& getCenter();
+        glm::vec3 const& getCenter() const;
 
-        float getRadius();
+        float getRadius() const;
 
     private:
 
