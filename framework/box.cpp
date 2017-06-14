@@ -3,11 +3,13 @@
 //Konstruktoren
 
 Box::Box():
+    Shape {},
     min_{-1.0f},
     max_{1.0f} {}
 
 
-Box::Box(glm::vec3 min, glm::vec3 max):
+Box::Box(glm::vec3 const& min, glm::vec3 const& max, Color const& color, std::string const& name):
+    Shape {color, name},
     min_{min},
     max_{max} {}
 
@@ -23,18 +25,13 @@ glm::vec3 const& Box::getMax() const{
 
 //Shape Methoden
 
-float Box::area() const{                            //eigentlich std::abs
-    float a = abs(abs(max_.x) - abs(min_.x));
-    float b = abs(abs(max_.y) - abs(min_.y));
-    float c = abs(abs(max_.z) - abs(min_.z));
-    return 2*((a * b) + (b * c) + (a * c));
+float Box::area() const{                           
+    auto diff = max_ - min_;
+    return 2*((diff.x * diff.y) + (diff.y * diff.z) + (diff.x * diff.z));
 
 }
 
 float Box::volume() const{
-    float a = abs(abs(max_.x) - abs(min_.x));
-    float b = abs(abs(max_.y) - abs(min_.y));
-    float c = abs(abs(max_.z) - abs(min_.z));
-    return a * b * c;
-    
+    auto diff = max_ - min_;
+    return diff.x * diff.y * diff.z;
 }

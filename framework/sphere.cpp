@@ -4,10 +4,12 @@
 //Konstruktoren
 
 Sphere::Sphere(): 
+    Shape {},
     center_{0.0f},
     radius_{1.0f} {}
 
-Sphere::Sphere(glm::vec3 const& center, float radius):
+Sphere::Sphere(glm::vec3 const& center, float radius, Color const& color, std::string const& name):
+    Shape {color, name},
     center_{center},
     radius_{radius} {}
 
@@ -24,9 +26,9 @@ float Sphere::getRadius() const{
 //Shape Methoden 
 
 float Sphere::area() const{
-    return 4 * M_PI * pow(radius_, 2);
+    return 4.0f * M_PI * radius_ * radius_;
 }
 
 float Sphere::volume() const{
-    return ((4/3) * M_PI * pow(radius_, 3));
+    return ((4.0f * M_PI * pow(radius_, 3))/3);
 }

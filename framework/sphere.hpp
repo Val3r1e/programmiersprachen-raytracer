@@ -9,7 +9,7 @@ class Sphere : public Shape {
 
         Sphere();
 
-        Sphere(glm::vec3 const& center_, float radius_);            //mit const& da kein primitiver Datentyp
+        Sphere(glm::vec3 const& center, float radius, Color const& color, std::string const& name);            //mit const& da kein primitiver Datentyp
 
         virtual float  area() const override;
 

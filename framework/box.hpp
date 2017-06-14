@@ -9,7 +9,7 @@ class Box : public Shape{
 
         Box();
 
-        Box(glm::vec3 min_, glm::vec3 max_);
+        Box(glm::vec3 const& min, glm::vec3 const& max, Color const& color, std::string const& name);
 
         virtual float  area() const override;
 
