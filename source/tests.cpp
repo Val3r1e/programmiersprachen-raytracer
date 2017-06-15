@@ -77,7 +77,7 @@ TEST_CASE ("Box shape-functions ", "[Aufg. 5.2]")
   REQUIRE (b.volume() == 27.0f);
 }
 
-TEST_CASE ("Sphere Color and Name ", "[Aufg. 5.2]")
+TEST_CASE ("Sphere Color and Name ", "[Aufg. 5.3]")
 {
   glm::vec3 g {2.0f};
   Color c {0.0f, 0.0f, 0.0f};       //rot, grün, blau
@@ -89,7 +89,7 @@ TEST_CASE ("Sphere Color and Name ", "[Aufg. 5.2]")
   REQUIRE (s.getColor().b == 0.0f);
 }
 
-TEST_CASE ("Box Color and Name ", "[Aufg. 5.2]")
+TEST_CASE ("Box Color and Name ", "[Aufg. 5.3]")
 {
   glm::vec3 g {2.0f};
   glm::vec3 g2 {5.0f};
@@ -100,6 +100,25 @@ TEST_CASE ("Box Color and Name ", "[Aufg. 5.2]")
   REQUIRE (b.getColor().r == 0.0f);
   REQUIRE (b.getColor().g == 0.0f);
   REQUIRE (b.getColor().b == 0.0f);
+}
+
+TEST_CASE ("Sphere print ", "[Aufg. 5.5]")
+{
+  glm::vec3 g {2.0f};
+  Color c {0.0f, 0.0f, 0.0f};       //rot, grün, blau
+  std::string st = "Sphere";
+  Sphere s {g, 4.0f, c, st};
+  std::cout << s;
+}
+
+TEST_CASE ("Box print ", "[Aufg. 5.5]")
+{
+  glm::vec3 g {2.0f};
+  glm::vec3 g2 {5.0f};
+  Color c {0.0f, 0.0f, 0.0f};
+  std::string st = "Box";
+  Box b {g, g2, c, st};
+  std::cout << b;
 }
 
 int main(int argc, char *argv[])

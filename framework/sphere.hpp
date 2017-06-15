@@ -19,6 +19,8 @@ class Sphere : public Shape {
 
         float getRadius() const;
 
+        virtual std::ostream& print(std::ostream& os) const override;
+
     private:
 
         glm::vec3 center_;

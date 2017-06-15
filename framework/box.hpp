@@ -19,6 +19,8 @@ class Box : public Shape{
 
         glm::vec3 const& getMax() const;
 
+        virtual std::ostream& print(std::ostream& os) const override;
+
     private:
 
         glm::vec3 min_;
