@@ -1,5 +1,5 @@
 #include "sphere.hpp"
-#include "cmath"
+
 
 //Konstruktoren
 
@@ -12,6 +12,12 @@ Sphere::Sphere(glm::vec3 const& center, float radius, Color const& color, std::s
     Shape {color, name},
     center_{center},
     radius_{radius} {}
+
+Sphere::~Sphere(){
+
+}
+
+
 
 //get-Methoden
 
@@ -37,4 +43,8 @@ std::ostream& Sphere::print(std::ostream& os) const{
     Shape::print(os);
     os << "Radius: " << radius_ << ", \nCenter point: (" << center_.x << "," << center_.y << "," << center_.z << ") \n \n";
     return os;
+}
+
+bool Sphere::intersect(Ray const& ray, float& distance) const{
+    return glm::intersectRaySphere(ray.origin_, ray.direction_, center_, radius_ * radius_, distance);
 }

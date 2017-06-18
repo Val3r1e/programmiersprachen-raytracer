@@ -8,6 +8,10 @@ Shape::Shape (Color const& color, std::string const& name):
     color_ {color},
     name_ {name} {}
 
+Shape::~Shape() {
+
+}
+
 std::string Shape::getName() const{
     return name_;
 }

@@ -1,5 +1,4 @@
 #include "shape.hpp"
-#include <glm/vec3.hpp>
 #ifndef BUW_SPHERE_HPP
 #define BUW_SPHERE_HPP
 
@@ -11,6 +10,8 @@ class Sphere : public Shape {
 
         Sphere(glm::vec3 const& center, float radius, Color const& color, std::string const& name);            //mit const& da kein primitiver Datentyp
 
+        ~Sphere() override;
+
         virtual float  area() const override;
 
         virtual float volume() const override;
@@ -20,6 +21,8 @@ class Sphere : public Shape {
         float getRadius() const;
 
         virtual std::ostream& print(std::ostream& os) const override;
+
+        bool intersect(Ray const& ray, float& distance) const;
 
     private:
 

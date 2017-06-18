@@ -2,6 +2,8 @@
 #define BUW_SHAPE_HPP
 #include <glm/vec3.hpp>
 #include "color.hpp"
+#include "ray.hpp"
+#include "cmath"
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -13,6 +15,8 @@ class Shape {
         Shape ();
 
         Shape (Color const& color, std::string const& name);
+
+        virtual ~Shape();
 
         virtual float area() const = 0;
 
@@ -32,9 +36,5 @@ class Shape {
 };
 
 std::ostream& operator<<(std::ostream& os, Shape const& s);
-    /*//return s.print(os);
-    os << "hello";
-    return os;
-}*/
 
 #endif

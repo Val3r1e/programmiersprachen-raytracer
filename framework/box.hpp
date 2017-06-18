@@ -11,6 +11,8 @@ class Box : public Shape{
 
         Box(glm::vec3 const& min, glm::vec3 const& max, Color const& color, std::string const& name);
 
+        ~Box() override;
+
         virtual float  area() const override;
 
         virtual float volume() const override;

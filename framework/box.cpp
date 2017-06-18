@@ -13,6 +13,10 @@ Box::Box(glm::vec3 const& min, glm::vec3 const& max, Color const& color, std::st
     min_{min},
     max_{max} {}
 
+Box::~Box(){
+    
+}
+
 //get-Methoden
 
 glm::vec3 const& Box::getMin() const{
