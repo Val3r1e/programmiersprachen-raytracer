@@ -1,15 +1,15 @@
 #include "shape.hpp"
 
-Shape::Shape ():
+Shape::Shape ():                    //ctor - constructor
     color_ {0.0f, 0.0f, 0.0f},
-    name_ {"Shape"} {}
+    name_ {"Shape"} { std::cout << "ctor - base class Shape \n"; }
 
 Shape::Shape (Color const& color, std::string const& name):
     color_ {color},
-    name_ {name} {}
+    name_ {name} { std::cout << "ctor - base class Shape \n"; }
 
-Shape::~Shape() {
-
+Shape::~Shape() {                  //dtor - destructor
+    std::cout << "dtor - base class Shape \n";
 }
 
 std::string Shape::getName() const{
@@ -21,7 +21,7 @@ Color Shape::getColor() const{
 }
 
 std::ostream& Shape::print(std::ostream& os) const{
-    os << "Name: " << name_ << ", \nRgb: " << color_;
+    os << "Name: " << name_ << ", \n Rgb: " << color_;
     return os;
 }
 

@@ -1,5 +1,4 @@
 #include "shape.hpp"
-#include <glm/vec3.hpp>
 #ifndef BUW_BOX_HPP
 #define BUW_BOX_HPP
 
@@ -12,6 +11,8 @@ class Box : public Shape{
         Box(glm::vec3 const& min, glm::vec3 const& max, Color const& color, std::string const& name);
 
         ~Box() override;
+
+        //~Box();
 
         virtual float  area() const override;
 
