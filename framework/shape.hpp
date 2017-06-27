@@ -3,6 +3,7 @@
 #include <glm/vec3.hpp>
 #include "color.hpp"
 #include "ray.hpp"
+#include "material.hpp"
 #include "cmath"
 #include <iostream>
 #include <ostream>
@@ -13,6 +14,8 @@ class Shape {
     public:
 
         Shape ();
+
+        Shape (Material const& material, std::string const& name);
 
         Shape (Color const& color, std::string const& name);
 
@@ -28,12 +31,17 @@ class Shape {
 
         Color getColor() const;
 
+        Material getMaterial() const;
+
         virtual std::ostream& print(std::ostream& os) const;
+
+        virtual bool intersect(Ray const& ray, float& distance) const = 0;
 
     protected:
 
         std::string name_;
         Color color_;
+        Material material_;
 
 };
 
