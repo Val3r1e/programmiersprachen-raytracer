@@ -6,12 +6,12 @@
 Sphere::Sphere(): 
     Shape {},
     center_{0.0f},
-    radius_{1.0f} { std::cout << "ctor - derived class Sphere \n"; }
+    radius_{1.0f} {}
 
 Sphere::Sphere(glm::vec3 const& center, float radius, Color const& color, std::string const& name):
     Shape {color, name},
     center_{center},
-    radius_{radius} { std::cout << "ctor - derived class Sphere \n"; }
+    radius_{radius} {}
 
 Sphere::~Sphere(){
     std::cout << "dtor - derived class Sphere \n";

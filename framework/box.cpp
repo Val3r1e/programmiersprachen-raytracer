@@ -46,3 +46,7 @@ std::ostream& Box::print(std::ostream& os) const{
     << "Max coordinates: (" << max_.x << "," << max_.y << "," << max_.z << ") \n \n";
     return os;
 }
+
+bool Box::intersect(Ray const& ray, float& distance) const{
+
+}

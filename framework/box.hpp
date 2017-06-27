@@ -24,6 +24,8 @@ class Box : public Shape{
 
         virtual std::ostream& print(std::ostream& os) const override;
 
+        virtual bool intersect(Ray const& ray, float& distance) const override;
+
     private:
 
         glm::vec3 min_;

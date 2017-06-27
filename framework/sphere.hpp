@@ -24,7 +24,7 @@ class Sphere : public Shape {
 
         virtual std::ostream& print(std::ostream& os) const override;
 
-        bool intersect(Ray const& ray, float& distance) const;
+        virtual bool intersect(Ray const& ray, float& distance) const override;
 
     private:
 
