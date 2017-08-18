@@ -1,19 +1,19 @@
 #include "shape.hpp"
 
-Shape::Shape ():                    //ctor - constructor
+Shape::Shape():                    //ctor - constructor
     material_ {},
     name_ {"Shape"} {}
 
-Shape::Shape (Material const& material, std::string const& name):
+Shape::Shape(Material const& material, std::string const& name):
     material_ {material},
     name_ {name} {}
 
-Shape::Shape (Color const& color, std::string const& name):
+Shape::Shape(Color const& color, std::string const& name):
     color_ {color},
     name_ {name} {}
 
-Shape::~Shape() {                  //dtor - destructor
-    std::cout << "dtor - base class Shape \n";
+Shape::~Shape(){                  //dtor - destructor
+    //std::cout << "dtor - base class Shape \n";
 }
 
 std::string Shape::getName() const{
@@ -29,7 +29,7 @@ Material Shape::getMaterial() const {
 }
 
 std::ostream& Shape::print(std::ostream& os) const{
-    os << "Name: " << name_ << ", \nRgb: " << color_;
+    os << "Name: " << name_ << ", \n" << material_;
     return os;
 }
 

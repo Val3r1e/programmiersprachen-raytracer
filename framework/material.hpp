@@ -2,7 +2,7 @@
 #define BUW_MATERIAL_HPP
 #include "color.hpp"
 #include <iostream>
-#include <String>
+#include <string>
 
 struct Material{
 
@@ -20,8 +20,12 @@ struct Material{
         ks_{ks},
         m_{m} {}
 
-    std::ostream& operator<<(std::ostream& os, Material const& m){
-        os << "Name: " << name_ << ", \nKa: " << ka_ << ", \nKd: " << kd_ << ", \nKs: " << ks_ << ", \nFloat: " << m_ << "\n";
+    friend std::ostream& operator<<(std::ostream& os, Material const& m){
+        os << "Material: " << m.name_ << 
+            "\nKa: " << m.ka_ << 
+            "Kd: " << m.kd_ << 
+            "Ks: " << m.ks_ << 
+            "Float: " << m.m_ << "\n";
         return os;
     }
 

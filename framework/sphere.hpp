@@ -8,6 +8,8 @@ class Sphere : public Shape {
 
         Sphere();
 
+        Sphere(Material const& material, std::string const& name, glm::vec3 const& center, float radius);
+
         Sphere(glm::vec3 const& center, float radius, Color const& color, std::string const& name);            //mit const& da kein primitiver Datentyp
 
         ~Sphere() override;

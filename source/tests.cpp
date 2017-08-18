@@ -3,6 +3,9 @@
 #include "sphere.hpp"
 #include "box.hpp"
 #include "shape.hpp"
+#include "material.hpp"
+#include "SDFLoader.cpp"
+#include "scene.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
 
@@ -181,7 +184,7 @@ TEST_CASE (" intersectRaySphere ", "[Aufg. 5.6]")
 
 }
 
-TEST_CASE ("Destruktor Beispiel", "[Aufg. 5.8]")
+TEST_CASE ("Destruktor example", "[Aufg. 5.8]")
 {
   Color red (255,0,0);
   glm::vec3 position (0.0f, 0.0f, 0.0f);
@@ -192,6 +195,75 @@ TEST_CASE ("Destruktor Beispiel", "[Aufg. 5.8]")
   delete s1;
   delete s2;
 }
+
+TEST_CASE("Box intersect", "[Aufg. 6.3]")
+{
+
+  //Strahl z-Richtung
+  glm::vec3 ray_origin{0.0 ,0.0 ,0.0};
+  glm::vec3 ray_direction{0.0 ,0.0 ,1.0};
+  Ray ray{ray_origin, ray_direction};
+  float distance{0.0};
+
+  Box box{glm::vec3{-2,-2,1}, glm::vec3{2,6,5},Color{}, "Zu schneidende Box"};
+  REQUIRE(box.intersect(ray, distance));
+  REQUIRE(distance == 1.0f);
+
+}
+
+TEST_CASE("Material Construktor", "[Aufg. 6.4]")
+{
+  //Default Constructor
+
+  Material m {};
+
+  REQUIRE(m.name_ == "tolles Material");
+  REQUIRE(m.kd_.r == 0.0f);
+  REQUIRE(m.kd_.g == 0.0f);
+  REQUIRE(m.kd_.b == 0.0f);
+  REQUIRE(m.ka_.r == 0.0f);
+  REQUIRE(m.ks_.r == 0.0f);
+  REQUIRE(m.m_ == 1.0f);
+
+  //User-Construktor
+
+  Color c1 {1.0f};      //(1.0, 1.0, 1.0)
+  Color c2 {0.0f};      //(0.0, 0.0, 0.0)
+  Color c3 {1.0f};
+
+  Material m2 {"Material", c1, c2, c3, 2.0f};
+
+  REQUIRE(m2.name_ == "Material");
+  REQUIRE(m2.ka_.r == 1.0f);
+  REQUIRE(m2.kd_.r == 0.0f);
+  REQUIRE(m2.ks_.r == 1.0f);
+  REQUIRE(m2.m_ == 2.0f);
+}
+
+TEST_CASE("Sphere Construktor with Material + print", "[Aufg. 6.4]")
+{
+  Color c1 {1.0f};      
+  Color c2 {0.0f};      
+  Color c3 {1.0f};
+  Material m2 {"Material", c1, c2, c3, 2.0f};
+  glm::vec3 c {5.0f};
+
+  Sphere s {m2, "Sphere", c, 2.0f};
+
+  std::cout << s;
+
+  REQUIRE(s.getMaterial().name_ == "Material");
+}
+
+TEST_CASE("SDF loader Material", "[6.5 SDF loader]"){
+  std::cout<<"--------------------6.5-----------------\n";
+
+  Scene scene{};
+  scene.SDFLoader("documents/programmiersprachen-raytracer/doc/material.txt");
+}
+
+//define shape box b1 -1 -1 -1 2 2 2 red
+//define shape sphere s1 2 2 2 3.0 blue
 
 int main(int argc, char *argv[])
 {

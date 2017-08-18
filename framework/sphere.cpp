@@ -8,16 +8,19 @@ Sphere::Sphere():
     center_{0.0f},
     radius_{1.0f} {}
 
+Sphere::Sphere(Material const& material, std::string const& name, glm::vec3 const& center, float radius):
+    Shape {material, name},
+    center_{center},
+    radius_{radius} {}
+
 Sphere::Sphere(glm::vec3 const& center, float radius, Color const& color, std::string const& name):
     Shape {color, name},
     center_{center},
     radius_{radius} {}
 
 Sphere::~Sphere(){
-    std::cout << "dtor - derived class Sphere \n";
+    //std::cout << "dtor - derived class Sphere \n";
 }
-
-
 
 //get-Methoden
 

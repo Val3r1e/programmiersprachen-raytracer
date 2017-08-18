@@ -2,7 +2,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
 
-struct Ray{
+struct Ray{ //Muss also von Kamera aus (origin gleich) durch jeden Pixel (unterschiedliche Direction)
 
 
         Ray():
